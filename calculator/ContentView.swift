@@ -55,7 +55,7 @@ struct ContentView: View {
                             Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: geometry.size.width, height: geometry.size.height + 10)
+                                .frame(width: geometry.size.width, height: geometry.size.height)
                                 .clipped()
                                 .onAppear{image = UserDefaults.standard.image(forKey: "background")}
                         }
@@ -68,7 +68,7 @@ struct ContentView: View {
                     }
                 }.padding(.bottom, 70)
             }
-        }
+        }.navigationViewStyle(.stack)
     }
 }
 
@@ -80,6 +80,7 @@ struct NumberView: View {
     var caluculateItems: [String]
     
     private let buttonWidth: CGFloat = (UIScreen.main.bounds.width - 50) / 4
+    private let buttonHeight: CGFloat = (UIScreen.main.bounds.height * 0.6) / 5
     private let numbers: [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     private let calculation: [String] = ["÷", "×", "-", "+"]
     
@@ -96,7 +97,7 @@ struct NumberView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                         }
                         .foregroundColor(Color.white)
-                            .frame(width: buttonWidth)
+                        .frame(width: buttonWidth)
                         
                         Rectangle()
                             .foregroundColor(borderW(item: item))
@@ -108,7 +109,7 @@ struct NumberView: View {
                         .frame(height: 1)
                 }
             }
-            .frame(height: buttonWidth)
+            .frame(height: buttonHeight)
         }
     }
     
